@@ -24,18 +24,8 @@ io.on('connection', function (socket) {
     catch (e) {
 
     }
-    sendMessage(socket,'pins',pins);
-    socket.on('message', function (message) {
-        console.log('Message: ' + message);
-        switch (message.status) {
-            case 'test':
-                console.log('You sent test');
-                break;
-            case 'save':
-                console.log("Save the pins: ");
-        }
-    });
 
+    //Is a MediaServer calling the 'save' method
     socket.on('save', function (message) {
         console.log('Save Pins: ' + message);
         this.pins = JSON.parse(message);
